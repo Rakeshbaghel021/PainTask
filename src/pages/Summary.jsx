@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const Summary = () => {
   const { state } = useLocation();
-
   const columns = [
     {
       title: "Description",
@@ -32,15 +31,19 @@ const Summary = () => {
       key: "timeProblem",
     },
     {
+      title: "Average",
+      dataIndex: "multicheck",
+      key: "multicheck",
+    },
+    {
       title: "Rating",
       dataIndex: "rating",
       key: "rating",
     },
   ];
-  console.log(state);
   return (
-    <div className="header">
-      <h2>Summary </h2>
+    <div className="header-table">
+      <h2 style={{ marginBottom: "1rem", color: "#3672af" }}>Summary </h2>
       <Table dataSource={state} columns={columns} />;
       <div className="back-next">
         <Link to="/">

@@ -27,7 +27,32 @@ const Form = ({ key, value, formData, setFormData }) => {
     }
   };
 
-  const onChangeCheck=()=>{}
+  const onChangeCheck = (e, ch) => {
+    if (e.target.checked) {
+      let finalval = formData.map((val) => {
+        if (val.id === value.id) {
+          if (ch === "chec") {
+            val.multicheck.push(e.target.value);
+          }
+        }
+        return val;
+      });
+      setFormData(finalval);
+    } else {
+      let finalval = formData.map((val) => {
+        if (val.id === value.id) {
+          if (ch === "chec") {
+            const valfound = val.multicheck.find((v) => v === e.target.value);
+            if (valfound) {
+              val.multicheck = val.multicheck.filter((fil) => fil !== valfound);
+            }
+          }
+        }
+        return val;
+      });
+      setFormData(finalval);
+    }
+  };
   const handleFormChange = (newdata, fortodo) => {
     let finalvalue = formData.map((val) => {
       if (val.id === value.id) {
@@ -60,7 +85,7 @@ const Form = ({ key, value, formData, setFormData }) => {
             onChange={(e) => onChanges(e, "diag")}
             value={value.diagnosed}
           >
-            <Radio value="nr">Not Relevent</Radio>
+            <Radio value="NR">Not Relevent</Radio>
             <Radio checked={value.diagnosed === "Yes"} value="Yes">
               Yes
             </Radio>
@@ -75,7 +100,7 @@ const Form = ({ key, value, formData, setFormData }) => {
             onChange={(e) => onChanges(e, "phy")}
             value={value.physical}
           >
-            <Radio value="nr">Not Relevent</Radio>
+            <Radio value="NR">Not Relevent</Radio>
             <Radio checked={value.physical === "Yes"} value="Yes">
               Yes
             </Radio>
@@ -90,7 +115,7 @@ const Form = ({ key, value, formData, setFormData }) => {
             onChange={(e) => onChanges(e, "mental")}
             value={value.mental}
           >
-            <Radio value="nr">Not Relevent</Radio>
+            <Radio value="NR">Not Relevent</Radio>
             <Radio checked={value.mental === "Yes"} value="Yes">
               Yes
             </Radio>
@@ -105,7 +130,7 @@ const Form = ({ key, value, formData, setFormData }) => {
             onChange={(e) => onChanges(e, "timeProblem")}
             value={value.timeProblem}
           >
-            <Radio value="nr">Not Relevent</Radio>
+            <Radio value="NR">Not Relevent</Radio>
             <Radio checked={value.mental === "Daily"} value="Daily">
               Daily
             </Radio>
@@ -132,19 +157,43 @@ const Form = ({ key, value, formData, setFormData }) => {
         <div className="exp-section">
           <p>How often do you experience the problem ?</p>
           <div>
-            <Checkbox onChange={onChangeCheck} />
+            <Checkbox
+              onChange={(e) => onChangeCheck(e, "chec")}
+              value="Not Relevent"
+              checked={value.multicheck.find((v) => v === "Not Relevent")}
+            />
             <span className="check-fix">Not Relevent</span>
             <br />
-            <Checkbox className="check-each" onChange={onChanges} />
+            <br />
+            <Checkbox
+              onChange={(e) => onChangeCheck(e, "chec")}
+              value="When lying down"
+              checked={value.multicheck.find((v) => v === "When lying down")}
+            />
             <span className="check-fix">When lying down</span>
             <br />
-            <Checkbox className="check-each" onChange={onChanges} />
+            <Checkbox
+              className="check-each"
+              onChange={(e) => onChangeCheck(e, "chec")}
+              value="When sitting"
+              checked={value.multicheck.find((v) => v === "When sitting")}
+            />
             <span className="check-fix">When sitting</span>
             <br />
-            <Checkbox className="check-each" onChange={onChanges} />
+            <Checkbox
+              className="check-each"
+              onChange={(e) => onChangeCheck(e, "chec")}
+              value="Under Standing"
+              checked={value.multicheck.find((v) => v === "Under Standing")}
+            />
             <span className="check-fix">Under Standing</span>
             <br />
-            <Checkbox className="check-each" onChange={onChanges} />
+            <Checkbox
+              className="check-each"
+              onChange={(e) => onChangeCheck(e, "chec")}
+              value="In Walking"
+              checked={value.multicheck.find((v) => v === "In Walking")}
+            />
             <span className="check-fix">In Walking</span>
           </div>
         </div>

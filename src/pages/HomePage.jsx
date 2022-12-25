@@ -7,6 +7,7 @@ import Form from "../components/Form";
 const HomePage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState([]);
+
   const handleSubmit = () => {
     localStorage.setItem("data", JSON.stringify(formData));
     navigate("/summary", { state: formData });
@@ -16,10 +17,10 @@ const HomePage = () => {
       {
         id: Math.random() * 1000,
         description: "",
-        diagnosed: "nr",
-        physical: "nr",
-        mental: "nr",
-        timeProblem: "nr",
+        diagnosed: "NR",
+        physical: "NR",
+        mental: "NR",
+        timeProblem: "NR",
         rating: 0,
         multicheck: [],
       },
@@ -30,10 +31,10 @@ const HomePage = () => {
         {
           id: Math.random() * 1000,
           description: "",
-          diagnosed: "nr",
-          physical: "nr",
-          mental: "nr",
-          timeProblem: "nr",
+          diagnosed: "NR",
+          physical: "NR",
+          mental: "NR",
+          timeProblem: "NR",
           rating: 0,
           multicheck: [],
         },
@@ -72,10 +73,10 @@ const HomePage = () => {
               {
                 id: Math.random() * 1000,
                 description: "",
-                diagnosed: "nr",
-                physical: "nr",
-                mental: "nr",
-                timeProblem: "nr",
+                diagnosed: "NR",
+                physical: "NR",
+                mental: "NR",
+                timeProblem: "NR",
                 rating: 0,
                 multicheck: [],
               },
