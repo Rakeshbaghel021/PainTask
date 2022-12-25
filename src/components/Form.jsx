@@ -9,36 +9,36 @@ const Form = ({ key, value, formData, setFormData }) => {
     if (e.target.checked) {
       let finalvalue = formData.map((val) => {
         if (val.id === value.id) {
-          // if (fortodo === "desc") {
-          val.diagnosed = e.target.value;
-
-          // } else if (fortodo === "t2") {
-          // val.todo2 = newdata;
-          // } else {
-          // val.todo3 = newdata;
-          // }
+          if (checks === "diag") {
+            val.diagnosed = e.target.value;
+          } else if (checks === "phy") {
+            val.physical = e.target.value;
+          } else if (checks === "mental") {
+            val.mental = e.target.value;
+          } else if (checks === "timeProblem") {
+            val.timeProblem = e.target.value;
+          } else {
+            val.rating = e.target.value;
+          }
         }
         return val;
       });
       setFormData(finalvalue);
     }
   };
+
+  const onChangeCheck=()=>{}
   const handleFormChange = (newdata, fortodo) => {
     let finalvalue = formData.map((val) => {
       if (val.id === value.id) {
         if (fortodo === "desc") {
           val.description = newdata;
-        } else if (fortodo === "t2") {
-          val.todo2 = newdata;
-        } else {
-          val.todo3 = newdata;
         }
       }
       return val;
     });
     setFormData(finalvalue);
   };
-
   return (
     <div>
       <Header />
@@ -51,47 +51,60 @@ const Form = ({ key, value, formData, setFormData }) => {
         <TextArea
           rows={4}
           value={value.description}
+          placeholder="Enter description here..."
           onChange={(e) => handleFormChange(e.target.value, "desc")}
         />
         <div className="diagnosed-section">
           <p>Have You been Diagnosed with this problem ?</p>
-          <Radio.Group onChange={onChanges} value={value.diagnosed}>
+          <Radio.Group
+            onChange={(e) => onChanges(e, "diag")}
+            value={value.diagnosed}
+          >
             <Radio value="nr">Not Relevent</Radio>
-            <Radio checked={value.diagnosed === "yes"} value="yes">
+            <Radio checked={value.diagnosed === "Yes"} value="Yes">
               Yes
             </Radio>
-            <Radio checked={value.diagnosed === "no"} value="no">
+            <Radio checked={value.diagnosed === "No"} value="No">
               No
             </Radio>
           </Radio.Group>
         </div>
         <div className="diagnosed-section">
           <p>Did the Problem start after a physical trauma ?</p>
-          <Radio.Group onChange={onChanges} value={value.physical}>
+          <Radio.Group
+            onChange={(e) => onChanges(e, "phy")}
+            value={value.physical}
+          >
             <Radio value="nr">Not Relevent</Radio>
-            <Radio checked={value.physical === "yes"} value="yes">
+            <Radio checked={value.physical === "Yes"} value="Yes">
               Yes
             </Radio>
-            <Radio checked={value.physical === "no"} value="no">
+            <Radio checked={value.physical === "No"} value="No">
               No
             </Radio>
           </Radio.Group>
         </div>
         <div className="diagnosed-section">
           <p>Did the Problem start after a mental trauma ?</p>
-          <Radio.Group onChange={onChanges} value={value.mental}>
+          <Radio.Group
+            onChange={(e) => onChanges(e, "mental")}
+            value={value.mental}
+          >
             <Radio value="nr">Not Relevent</Radio>
-            <Radio checked={value.mental === "yes"} value="yes">
+            <Radio checked={value.mental === "Yes"} value="Yes">
               Yes
             </Radio>
-            <Radio checked={value.mental === "no"} value="no">
+            <Radio checked={value.mental === "No"} value="No">
               No
             </Radio>
           </Radio.Group>
         </div>
         <div className="exp-section">
           <p>How often do you experience the problem ?</p>
-          <Radio.Group onChange={onChanges} value={value.timeProblem}>
+          <Radio.Group
+            onChange={(e) => onChanges(e, "timeProblem")}
+            value={value.timeProblem}
+          >
             <Radio value="nr">Not Relevent</Radio>
             <Radio checked={value.mental === "Daily"} value="Daily">
               Daily
@@ -119,7 +132,7 @@ const Form = ({ key, value, formData, setFormData }) => {
         <div className="exp-section">
           <p>How often do you experience the problem ?</p>
           <div>
-            <Checkbox onChange={onChanges} />
+            <Checkbox onChange={onChangeCheck} />
             <span className="check-fix">Not Relevent</span>
             <br />
             <Checkbox className="check-each" onChange={onChanges} />
@@ -140,7 +153,10 @@ const Form = ({ key, value, formData, setFormData }) => {
             How intense is the experience of the problem on average on a 0-10
             scale?
           </p>
-          <Radio.Group onChange={onChanges} value={value.rating}>
+          <Radio.Group
+            onChange={(e) => onChanges(e, "rating")}
+            value={value.rating}
+          >
             <Radio value={0}>0</Radio>
             <Radio checked={value.rating === 1} value={1}>
               1

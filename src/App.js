@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Summary from "./pages/Summary";
-import "./App.css";
 import HomePage from "./pages/HomePage";
+import "./App.css";
 
 function App() {
   if (!localStorage.getItem("data")) {
@@ -16,6 +16,7 @@ function App() {
           mental: "nr",
           timeProblem: "nr",
           rating: 0,
+          multicheck: [],
         },
       ])
     );

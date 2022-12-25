@@ -21,6 +21,7 @@ const HomePage = () => {
         mental: "nr",
         timeProblem: "nr",
         rating: 0,
+        multicheck: [],
       },
     ]);
     localStorage.setItem(
@@ -34,6 +35,7 @@ const HomePage = () => {
           mental: "nr",
           timeProblem: "nr",
           rating: 0,
+          multicheck: [],
         },
       ])
     );
@@ -75,6 +77,7 @@ const HomePage = () => {
                 mental: "nr",
                 timeProblem: "nr",
                 rating: 0,
+                multicheck: [],
               },
             ]);
           }}
