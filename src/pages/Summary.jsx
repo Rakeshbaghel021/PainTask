@@ -1,4 +1,4 @@
-import { Button, Table } from "antd";
+import { Button, Table, Tag } from "antd";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -34,6 +34,7 @@ const Summary = () => {
       title: "Average",
       dataIndex: "multicheck",
       key: "multicheck",
+      render: (multicheck) => <>{multicheck.join(" , ")}</>,
     },
     {
       title: "Rating",
@@ -43,7 +44,7 @@ const Summary = () => {
   ];
   return (
     <div className="header-table">
-      <h2 style={{ marginBottom: "1rem", color: "#3672af" }}>Summary </h2>
+      <h2 style={{ marginBottom: "1rem", color: "#3672af" }}>Summary</h2>
       <Table dataSource={state} columns={columns} />;
       <div className="back-next">
         <Link to="/">
