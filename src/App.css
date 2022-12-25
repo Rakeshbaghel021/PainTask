@@ -1,38 +1,89 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* header */
+
+.header {
   text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 700px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 12px 0px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.header > h2 {
+  color: #3672af;
+  margin-bottom: 0.5rem;
+}
+.header > p {
+  width: 420px;
+  margin: 0 auto;
+  font-size: 0.9rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* main-form */
+.form-wrapper {
+  margin: 0 auto;
+  /* margin-top: 2rem; */
+  width: 700px;
+  /* border: 1px solid grey; */
+  padding: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.form-wrapper > p {
+  margin-bottom: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.diagnosed-section {
   display: flex;
-  flex-direction: column;
+  margin-top: 1.5rem;
+  justify-content: space-between;
   align-items: center;
+}
+
+.exp-section {
+  margin-top: 2rem;
+}
+.exp-section > p {
+  margin-bottom: 1rem;
+}
+
+.check-each {
+  margin-top: 1rem;
+}
+.check-fix {
+  margin-left: 0.5rem;
+}
+.avg-section {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.avg-section > p {
+  margin-bottom: 1rem;
+}
+.btn {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.back-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-style {
+  width: 150px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-style-clear {
+  margin-left: 37rem;
 }
