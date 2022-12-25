@@ -21,6 +21,21 @@ const Summary = () => {
       dataIndex: "physical",
       key: "physical",
     },
+    {
+      title: "Mental",
+      dataIndex: "mental",
+      key: "mental",
+    },
+    {
+      title: "TimeProblem",
+      dataIndex: "timeProblem",
+      key: "timeProblem",
+    },
+    {
+      title: "Rating",
+      dataIndex: "rating",
+      key: "rating",
+    },
   ];
   console.log(state);
   return (
